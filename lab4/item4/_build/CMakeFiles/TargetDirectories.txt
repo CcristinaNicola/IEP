@@ -1,0 +1,3 @@
+/home/cristina/Desktop/IEP/lab4/item4/_build/CMakeFiles/rebuild_cache.dir
+/home/cristina/Desktop/IEP/lab4/item4/_build/CMakeFiles/edit_cache.dir
+/home/cristina/Desktop/IEP/lab4/item4/_build/CMakeFiles/app_project.dir
