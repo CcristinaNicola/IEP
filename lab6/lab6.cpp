@@ -57,7 +57,20 @@ class Lock: public Mutex{
         }
 };
 
-class B{
+class Lock_Uncopyable {
+   protected: 
+       Lock_Uncopyable() {
+           cout<<"Constructor Lock_Uncopyable. \n";
+       } 
+       ~Lock_Uncopyable() {
+           cout<<"Destructor Lock_Uncopyable. \n";
+       } 
+   private:  // fiind private nu pot fi copiate de compilator 
+       Lock_Uncopyable(const Lock_Uncopyable&); 
+       Lock_Uncopyable& operator = (const Lock_Uncopyable&);
+};  
+
+class B : private Lock_Uncopyable{
     public:
         B();
         ~B();
@@ -83,18 +96,7 @@ void B::print(int n,char c){
         cout<<"\n";
     }
 
-class Lock_Uncopyable {
-   protected: 
-       Lock_Uncopyable() {
-           cout<<"Constructor Lock_Uncopyable. \n";
-       } 
-       ~Lock_Uncopyable() {
-           cout<<"Destructor Lock_Uncopyable. \n";
-       } 
-   private:  // fiind private nu pot fi copiate de compilator 
-       Lock_Uncopyable(const Lock_Uncopyable&); 
-       Lock_Uncopyable& operator = (const Lock_Uncopyable&);
-};    
+  
 
 
 int main() 
@@ -147,9 +149,10 @@ int main()
     b1.print(2,'a');
     b2.print(2,'b');
 
-    cout<<"Preventing copying\n";
-    // Lock_Uncopyable copy1,copy2;
-    // b1=b2;
+  cout<<"Preventing copying\n";
+    B b3,b4;
+   //  b4=b3;
+    // b4(b3);
 
     return 0; 
 } 
